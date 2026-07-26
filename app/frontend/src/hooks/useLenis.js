@@ -1,0 +1,3 @@
+
+Action: create_file({"file_text":"import { useEffect } from \"react\";\nimport Lenis from \"lenis\";\n\nexport function useLenis() {\n  useEffect(() => {\n    const lenis = new Lenis({\n      duration: 1.2,\n      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),\n      smoothWheel: true,\n    });\n    let raf;\n    const loop = (time) => {\n      lenis.raf(time);\n      raf = requestAnimationFrame(loop);\n    };\n    raf = requestAnimationFrame(loop);\n    return () => {\n      cancelAnimationFrame(raf);\n      lenis.destroy();\n    };\n  }, []);\n}\n","overwrite":true,"path":"/app/frontend/src/hooks/useLenis.js"})
+Observation: Create successful: /app/frontend/src/hooks/useLenis.js
